@@ -50,7 +50,6 @@ public class BookController {
         return bookUpdateService.updateBook(id, bookDTO);
     }
 
-    // CORREÇÃO: Adicionada a barra / antes de deletar
     @DeleteMapping("/deletar/{id}")
     public String deleteBook(@PathVariable UUID id) {
         return bookDeleteService.deleteBook(id);
