@@ -1,0 +1,9 @@
+<app-book-form-component
+  [bookToEdit]="selectedBook"
+  (bookSaved)="bookList.loadBooks()">
+</app-book-form-component>
+
+<app-book-list-component
+  #bookList
+  (onEditBook)="selectedBook = $event">
+</app-book-list-component>

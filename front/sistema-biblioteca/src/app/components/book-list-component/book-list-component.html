@@ -1,0 +1,50 @@
+
+<div class="container">
+  <h2>Sistema Biblioteca</h2>
+
+  <!-- Barra de pesquisa -->
+  <div class="search-bar">
+    <input type="text"
+           [(ngModel)]="searchTitle"
+           (keyup.enter)="findBookByTitle(searchTitle)"
+           placeholder="Digite o nome do livro...">
+
+    <button (click)="findBookByTitle(searchTitle)" title="Pesquisar" aria-label="Pesquisar">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Tabela de Exibição dos Livros -->
+  <table class="books-table" *ngIf="books && books.length > 0; else noBooks">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Autor(es)</th>
+        <th>Páginas</th>
+        <th>Data de Lançamento</th>
+        <th>Descrição</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books">
+        <td>{{ book.title }}</td>
+        <td>{{ book.authors }}</td>
+        <td>{{ book.pages }}</td>
+        <td>{{ book.releaseYear }}</td>
+        <td>{{ book.description }}</td>
+        <td class="action-buttons">
+          <button class="btn-edit" (click)="editBook(book)">Editar</button>
+          <button class="btn-delete" (click)="deleteBook(book.id!)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Estado Vazio -->
+  <ng-template #noBooks>
+    <p class="empty-message">Nenhum livro encontrado.</p>
+  </ng-template>
+</div>

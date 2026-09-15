@@ -1,0 +1,42 @@
+<div class="form-container">
+  <h2>{{ book.id ? 'Editar Livro' : 'Adicionar Livro' }}</h2>
+
+  <form (ngSubmit)="saveBook()">
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="title">Título</label>
+        <input type="text" id="title" name="title" [(ngModel)]="book.title" placeholder="Nome do livro" required>
+      </div>
+
+      <div class="form-group">
+        <label for="authors">Autor(es)</label>
+        <input type="text" id="authors" name="authors" [(ngModel)]="book.authors" placeholder="Nome do autor" required>
+      </div>
+
+      <div class="form-group">
+        <label for="pages">Páginas</label>
+        <input type="number" id="pages" name="pages" [(ngModel)]="book.pages" placeholder="Número de páginas" required>
+      </div>
+
+      <div class="form-group">
+        <label for="releaseYear">Data de Lançamento</label>
+        <input type="text" id="releaseYear" name="releaseYear" [(ngModel)]="book.releaseYear" placeholder="DD/MM/AAAA" required>
+      </div>
+
+      <div class="form-group full-width">
+        <label for="description">Descrição</label>
+        <input type="text" id="description" name="description" [(ngModel)]="book.description" placeholder="Digite uma breve descrição do livro" required>
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button type="submit">
+        {{ book.id ? 'Atualizar Livro' : 'Adicionar Livro' }}
+      </button>
+
+      <button type="button" *ngIf="book.id" (click)="clearForm()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>
